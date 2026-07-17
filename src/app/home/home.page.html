@@ -7,16 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <strong>We propose these new courses : </strong>
-  <hr />
-  <ion-list>
-    @for(course of courseSer.getAllCourses(); track course.id) {
-    <ion-item [routerLink]="['/details', course.id]">
-      <ion-avatar class="ion-margin-end">
-        <img [src]="course.logo" />
-      </ion-avatar>
-      <ion-label> {{ course.title }} </ion-label>
-    </ion-item>
-    }
-  </ion-list>
+  <div class="ion-margin">
+    <strong>We propose these new courses : </strong>
+    <hr />
+    <ion-list>
+      @for(course of courseSer.getAllCourses(); track course.id) {
+      <ion-item [routerLink]="['/details', course.id]">
+        <ion-avatar class="ion-margin-end">
+          <img [src]="course.logo" />
+        </ion-avatar>
+        <ion-label> {{ course.title }} </ion-label>
+      </ion-item>
+      }
+    </ion-list>
+  </div>
 </ion-content>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { GestionCours } from '../gestion-cours';
 
 @Component({
   selector: 'app-details-course',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class DetailsCoursePage implements OnInit {
+  private activatedRoute = inject(ActivatedRoute);
+  private courseSer = inject(GestionCours);
+  selectedCourse: any;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let id = this.activatedRoute.snapshot.paramMap.get('courseId');
+
+    this.selectedCourse = this.courseSer.getCoursebyId(id);
+    console.log(this.selectedCourse);
+  }
 }
