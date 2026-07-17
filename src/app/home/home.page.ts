@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GestionCours } from '../gestion-cours';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
+  courseSer = inject(GestionCours);
   constructor() {}
 }
