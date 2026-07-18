@@ -1,13 +1,49 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>add-course</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title>Add course</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">add-course</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="addCourseForm" (ngSubmit)="submitHandler()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Informations du cours</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-input
+          type="text"
+          labelPlacement="floating"
+          label="Titre du cours"
+          formControlName="title"
+        ></ion-input>
+        <ion-input
+          type="text"
+          labelPlacement="floating"
+          label="Auteur du cours"
+          formControlName="author"
+        ></ion-input>
+        <ion-input
+          type="url"
+          labelPlacement="floating"
+          label="Logo du cours"
+          formControlName="logo"
+        ></ion-input>
+        @if(addCourseForm.get("logo").value) {
+        <ion-img [src]="addCourseForm.get('logo').value"></ion-img>
+        }
+        <!--<ion-input
+          #logoCourse
+          type="url"
+          labelPlacement="floating"
+          label="Logo du cours"
+          formControlName="logo"
+        ></ion-input>
+        @if(logoCourse.value) {
+        <ion-img [src]="logoCourse.value"></ion-img>
+        }-->
+      </ion-card-content>
+    </ion-card>
+    <ion-button type="submit" expand="block">Submit</ion-button>
+  </form>
 </ion-content>

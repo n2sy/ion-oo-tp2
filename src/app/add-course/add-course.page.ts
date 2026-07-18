@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-course.page.scss'],
   standalone: false,
 })
-export class AddCoursePage implements OnInit {
+export class AddCoursePage {
+  addCourseForm = new FormGroup({
+    title: new FormControl(),
+    author: new FormControl('Nidhal'),
+    logo: new FormControl('', [Validators.required, Validators.minLength(5)]),
+  });
   constructor() {}
 
-  ngOnInit() {}
+  submitHandler() {
+    console.log(this.addCourseForm.value);
+  }
 }
