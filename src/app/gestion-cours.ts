@@ -35,4 +35,12 @@ export class GestionCours {
   getCoursebyId(courseId) {
     return this.allCourses.find((course) => course.id == courseId);
   }
+
+  deleteCourse(courseId) {
+    // const i = this.allCourses.findIndex((course) => course.id == courseId);
+    // //this.allCourses.indexOf(course) si on a l'objet en entier
+    // this.allCourses.splice(i, 1);
+    this.allCourses = this.allCourses.filter((course) => course.id != courseId);
+    console.log(this.allCourses);
+  }
 }
